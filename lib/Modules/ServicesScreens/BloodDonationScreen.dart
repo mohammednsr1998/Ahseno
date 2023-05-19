@@ -25,7 +25,7 @@ class BloodDonationScreen extends StatelessWidget {
                 child: TabBar(
                     overlayColor: MaterialStateColor.resolveWith(
                             (states) => Colors.white),
-                    isScrollable: true,
+                    isScrollable: false,
                     labelStyle: GoogleFonts.cairo(fontSize: 13),
                     labelColor: AppColors.CustomBlue,
                     labelPadding:
@@ -39,9 +39,9 @@ class BloodDonationScreen extends StatelessWidget {
                       Tab(
                         text: 'محتاجين الدم',
                       ),
-                      Tab(
-                        text: 'اماكن التبرع',
-                      ),
+                     // Tab(
+                     //   text: 'اماكن التبرع',
+                    //  ),
                     ]
                 ),
               ),

@@ -28,7 +28,7 @@ class _CreateCaseScreenState extends State<CreateCaseScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: defaultAppBar(title: "أنشاء حالة تبرع"),
+        appBar: defaultAppBar(title: "أنشاء حالة تبرع",context: context),
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Form(

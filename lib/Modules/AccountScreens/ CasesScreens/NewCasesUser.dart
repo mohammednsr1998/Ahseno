@@ -46,7 +46,7 @@ class NewCasesUserScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: defaultAppBar(title: "الحالات المضافة"),
+        appBar: defaultAppBar(title: "الحالات المضافة",context: context),
         body: ListView.separated(
             itemBuilder: (context,index)=> defaultCardItem(
                 image: "Assets/images/SliderImages/muslims-reading-from-quran.jpg",

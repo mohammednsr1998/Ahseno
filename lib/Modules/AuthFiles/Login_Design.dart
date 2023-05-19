@@ -12,59 +12,41 @@ import 'package:text_divider/text_divider.dart';
 
 import '../../Layout/layoutScreen.dart';
 
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
-
-
-
   @override
   Widget build(BuildContext context) {
+    var numberController = TextEditingController();
 
-    var numberController=TextEditingController();
-
-    GlobalKey<FormState> formkey=GlobalKey<FormState>();
+    GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
     return BlocProvider(
-
-      create: (BuildContext context)=> LoginCubit(),
-
-      child: BlocConsumer<LoginCubit,LoginStates>(
-
-        listener: (context,state){
-                if(state is LoginVerifyFailedState)
-                  {
-                    Navigator.pop(context);
-                    if(state.error.toString().contains("The sms verification code used to create the phone auth credential is invalid. "))
-                    {
-                      showFailedToast("رجاء التاكد من رمز التحقق الذي تم ادخاله", context) ;
-                    }
-                    else if(state.error.toString().contains("SMS verification code request failed: unknown status code: 17052 Exceeded quota."))
-                    {
-                      showFailedToast("هناك مشكلة الرجاء تحقق من قوة اتصالك بالانترنتً", context);
-                    }
-                    else
-                    {
-                      showFailedToast("هناك مشكلة الرجاء المحاولة لاحقاً", context);
-                    }
-                  }
-                if(state is LoginSuccessState)
-                  {
-                    CacheHelper.saveData(
-                        key: "uId",
-                        value: state.uId
-                    );
-                    NavgateNoGoBack(context: context, page: const LayoutScreen());
-                    showSuccessToast("تم تسجيل الدخول بنجاح", context);
-                  }
-
+      create: (BuildContext context) => LoginCubit(),
+      child: BlocConsumer<LoginCubit, LoginStates>(
+        listener: (context, state) {
+          if (state is LoginVerifyFailedState) {
+            Navigator.pop(context);
+            if (state.error.toString().contains(
+                "The sms verification code used to create the phone auth credential is invalid. ")) {
+              showFailedToast(
+                  "رجاء التاكد من رمز التحقق الذي تم ادخاله", context);
+            } else if (state.error.toString().contains(
+                "SMS verification code request failed: unknown status code: 17052 Exceeded quota.")) {
+              showFailedToast(
+                  "هناك مشكلة الرجاء تحقق من قوة اتصالك بالانترنتً", context);
+            } else {
+              showFailedToast("هناك مشكلة الرجاء المحاولة لاحقاً", context);
+            }
+          }
+          if (state is LoginSuccessState) {
+            CacheHelper.saveData(key: "uId", value: state.uId);
+            NavgateNoGoBack(context: context, page: const LayoutScreen());
+            showSuccessToast("تم تسجيل الدخول بنجاح", context);
+          }
         },
-
-        builder: (context,state){
-
-          LoginCubit loginCubit= LoginCubit.createLoginObject(context);
-
+        builder: (context, state) {
+          LoginCubit loginCubit = LoginCubit.createLoginObject(context);
 
           return Directionality(
             textDirection: TextDirection.rtl,
@@ -80,14 +62,15 @@ class LoginScreen extends StatelessWidget {
                           key: formkey,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children:  [
+                            children: [
                               const SizedBox(
                                 height: 100,
                               ),
                               const CircleAvatar(
                                 radius: 30,
                                 backgroundColor: Colors.transparent,
-                                backgroundImage: AssetImage("Assets/images/wellness-logo.png"),
+                                backgroundImage: AssetImage(
+                                    "Assets/images/wellness-logo.png"),
                               ),
                               const SizedBox(
                                 height: 20,
@@ -95,10 +78,7 @@ class LoginScreen extends StatelessWidget {
                               Text(
                                 "تسجيل الدخول",
                                 style: GoogleFonts.cairo(
-                                    fontSize: 25,
-                                    color: AppColors.CustomBlue
-                                ),
-
+                                    fontSize: 25, color: AppColors.CustomBlue),
                               ),
                               const SizedBox(
                                 height: 50,
@@ -106,18 +86,17 @@ class LoginScreen extends StatelessWidget {
                               DefaultTextField(
                                 label: "رقم الهاتف",
                                 textcontroller: numberController,
-                                function: (value){
-                                  RegExp regex =
-                                  RegExp(r'^(?=.*?\d).{10,13}$');
-                                  if(value!.isEmpty)
-                                  {
+                                function: (value) {
+                                  RegExp regex = RegExp(r'^(?=.*?\d).{10,13}$');
+                                  if (value!.isEmpty) {
                                     return "رجاء إدخال رقم الهاتف";
                                   } else {
-                                    if(!regex.hasMatch(value)){
+                                    if (!regex.hasMatch(value)) {
                                       return "رجاء تاكد من رقم الهاتف";
                                     }
-                                    if( !(value.startsWith("092") || value.startsWith("091") || value.startsWith("094")))
-                                    {
+                                    if (!(value.startsWith("092") ||
+                                        value.startsWith("091") ||
+                                        value.startsWith("094"))) {
                                       return "رجاء ادخال رقم هاتف صحيح (092-091-094)";
                                     }
                                   }
@@ -126,27 +105,20 @@ class LoginScreen extends StatelessWidget {
                                 keyboardtype: TextInputType.number,
                                 prefixicon: Icons.numbers,
                               ),
-
                               const SizedBox(
                                 height: 30,
                               ),
-
-
-                          DefaultButton(
-                            ButtonText: 'تسجيل الدخول',
-                            Function: () {
-                              if(formkey.currentState!.validate())
-                              {
-                                loginCubit.loginAccount(
-                                    number: numberController.text,
-                                    context:context
-                                );
-                              //  loginCubit.Sign();
-                              }
-                            },
-                          ),
-
-
+                              DefaultButton(
+                                ButtonText: 'تسجيل الدخول',
+                                Function: () {
+                                  if (formkey.currentState!.validate()) {
+                                    loginCubit.loginAccount(
+                                        number: numberController.text,
+                                        context: context);
+                                    //  loginCubit.Sign();
+                                  }
+                                },
+                              ),
                               const SizedBox(
                                 height: 40,
                               ),
@@ -155,8 +127,7 @@ class LoginScreen extends StatelessWidget {
                                   "أو",
                                   style: GoogleFonts.cairo(
                                       fontSize: 12,
-                                      fontWeight: FontWeight.bold
-                                  ),
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 color: AppColors.CustomGrey,
                                 thickness: 1,
@@ -171,33 +142,28 @@ class LoginScreen extends StatelessWidget {
                                 children: [
                                   IconButton(
                                       padding: const EdgeInsets.only(right: 20),
-                                      onPressed:(){
+                                      onPressed: () {
                                         NavgatetoPage(
                                             context: context,
-                                            page:   const SignUpScreen()
-                                        );
+                                            page: const SignUpScreen());
                                       },
-                                      icon:Icon( Icons.account_circle_outlined,
+                                      icon: Icon(
+                                        Icons.account_circle_outlined,
                                         size: 25,
                                         color: AppColors.CustomGreen,
-                                      )
-
-                                  ),
+                                      )),
                                   TextButton(
-                                      onPressed: (){
+                                      onPressed: () {
                                         NavgatetoPage(
-                                            context:context,
-                                            page: const SignUpScreen()
-                                        );
+                                            context: context,
+                                            page: const SignUpScreen());
                                       },
-                                      child:  Text(
+                                      child: Text(
                                         "أنشاء حساب",
                                         style: GoogleFonts.cairo(
                                             fontSize: 18,
-                                            color: AppColors.CustomGreen
-                                        ),
-                                      )
-                                  )
+                                            color: AppColors.CustomGreen),
+                                      ))
                                 ],
                               )
                             ],
@@ -210,13 +176,8 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           );
-
-
         },
       ),
     );
   }
-
 }
-
-

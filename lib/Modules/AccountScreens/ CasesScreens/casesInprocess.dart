@@ -9,7 +9,7 @@ class CasesInProcessScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: defaultAppBar(title: "الحالات قيد المراجعة"),
+        appBar: defaultAppBar(title: "الحالات قيد المراجعة",context: context ),
         body: ListView.separated(
             itemBuilder: (context,index)=>differentcaseCard(
                 image: 'Assets/images/SliderImages/muslims-reading-from-quran.jpg',

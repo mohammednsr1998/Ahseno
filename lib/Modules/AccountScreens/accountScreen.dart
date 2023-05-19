@@ -19,6 +19,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../Shared/constants.dart';
+import 'Administrator Screens/CreateAccount.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -122,7 +123,7 @@ class AccountScreen extends StatelessWidget {
 
                 // Adimn of the sections
                 Visibility(
-                  visible: false,
+                  visible: true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -247,6 +248,132 @@ class AccountScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Text(
+                          "إدارة النظام",
+                          style: TextStyle(
+                              color: AppColors.CustomGreen
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 10,),
+
+
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 10,
+                                    color: Colors.black.withOpacity(0.16),
+                                    blurStyle: BlurStyle.outer
+                                )
+                              ]
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20),
+                                  child: ListTile(
+                                    leading: Text(
+                                      "إنشاء حساب مدير قسم",
+                                      style: TextStyle(
+                                          color: AppColors.CustomGrey
+                                      ),
+                                    ),
+                                    trailing:  Icon(
+                                      Icons.arrow_circle_left_outlined,
+                                      color: AppColors.CustomBlue,
+                                    ),
+                                    shape: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    onTap: (){
+                                      NavgatetoPage(context: context, page: const CreateAccount());
+                                    },
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20),
+                                  child: ListTile(
+                                    leading: Text(
+                                      "تعديل بيانات مدير القسم",
+                                      style: TextStyle(
+                                          color: AppColors.CustomGrey
+                                      ),
+                                    ),
+                                    trailing:  Icon(
+                                      Icons.arrow_circle_left_outlined,
+                                      color: AppColors.CustomBlue,
+                                    ),
+                                    shape: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    onTap: (){
+                                      NavgatetoPage(context: context, page: const NewCasesScreen());
+                                    },
+
+                                  ),
+                                ),
+
+
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20),
+                                  child: ListTile(
+                                    leading: Text(
+                                      "حدف حساب مدير القسم",
+                                      style: TextStyle(
+                                          color: AppColors.CustomGrey
+                                      ),
+                                    ),
+                                    trailing:  Icon(
+                                      Icons.arrow_circle_left_outlined,
+                                      color: AppColors.CustomBlue,
+                                    ),
+                                    shape: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
+                                    onTap: (){
+                                      NavgatetoPage(context: context, page:  EditCasesScreen());
+                                    },
+                                  ),
+                                ),
+
+
+                                /* Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20),
+                          child: ListTile(
+                            leading: Text(
+                              "طلبات التاكيد من الرفض",
+                              style: TextStyle(
+                                  color: AppColors.CustomGrey
+                              ),
+                            ),
+                            trailing:  Icon(
+                              Icons.arrow_circle_left_outlined,
+                              color: AppColors.CustomBlue,
+                            ),
+                            shape: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                          ),
+                        ),*/
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
                     ],
                   ),
                 ),
@@ -432,7 +559,7 @@ class AccountScreen extends StatelessWidget {
                                   },
                                 ),
                               ),
-                              Padding(
+                    /*         Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20),
                                 child: ListTile(
                                   leading: Text(
@@ -452,7 +579,7 @@ class AccountScreen extends StatelessWidget {
                                     NavgatetoPage(context: context, page: const FeedBackScreen());
                                   },
                                 ),
-                              ),
+                              ),    */
 
                               Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20),

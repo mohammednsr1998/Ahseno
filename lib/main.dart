@@ -60,7 +60,7 @@ class Myapp extends StatelessWidget{
             return  MaterialApp(
               home:  Directionality(
                 textDirection: TextDirection.rtl,
-                child: isBoarding == true ?  const LoginScreen() : const OnBoardingScreen(),
+                child: isBoarding == true ?  const LayoutScreen() : const OnBoardingScreen(),
               ),
               theme: ThemeData(
                 textTheme:GoogleFonts.cairoTextTheme(),

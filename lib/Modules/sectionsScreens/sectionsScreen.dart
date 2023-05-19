@@ -29,7 +29,7 @@ class _SectionsScreenState extends State<SectionsScreen> {
             }
         ),
         body: DefaultTabController(
-          length: 5,
+          length: 3,
           child: Column(
             children: [
               Container(
@@ -38,13 +38,13 @@ class _SectionsScreenState extends State<SectionsScreen> {
                 child: TabBar(
                     overlayColor: MaterialStateColor.resolveWith(
                         (states) => Colors.white),
-                    isScrollable: true,
-                    labelStyle: GoogleFonts.cairo(fontSize: 13),
+                    isScrollable: false,
+                    labelStyle: GoogleFonts.cairo(fontSize: 15),
                     labelColor: AppColors.CustomBlue,
                     labelPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     indicatorColor: AppColors.CustomBlue,
-                    indicatorWeight: 1,
-                    indicatorPadding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+                    indicatorWeight: 2,
+                    indicatorPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
                     unselectedLabelColor: AppColors.CustomGrey,
                     tabs: const [
                       Tab(
@@ -53,12 +53,12 @@ class _SectionsScreenState extends State<SectionsScreen> {
                       Tab(
                         text: 'المشاريع الخيرية',
                       ),
-                      Tab(
+               /*       Tab(
                         text: 'مسجونين',
                       ),
                       Tab(
                         text: 'الكفالات',
-                      ),
+                      ),  */
                       Tab(
                         text: 'المديونين',
                       ),

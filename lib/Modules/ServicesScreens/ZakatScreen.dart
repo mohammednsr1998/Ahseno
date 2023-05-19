@@ -42,7 +42,7 @@ class _ZakatScreenState extends State<ZakatScreen> {
                 context: context
             ),
             body:  DefaultTabController(
-              length: 2,
+              length: 1,
               child: Column(
                 children: [
                   //TabBar
@@ -52,7 +52,7 @@ class _ZakatScreenState extends State<ZakatScreen> {
                     child: TabBar(
                         overlayColor: MaterialStateColor.resolveWith(
                                 (states) => Colors.white),
-                        isScrollable: true,
+                        isScrollable: false,
                         labelStyle: GoogleFonts.cairo(fontSize: 13),
                         labelColor: AppColors.CustomBlue,
                         labelPadding:
@@ -66,9 +66,9 @@ class _ZakatScreenState extends State<ZakatScreen> {
                           Tab(
                             text: 'حاسبة الزكاة',
                           ),
-                          Tab(
-                            text: 'حجز موعد مع خبير',
-                          ),
+                    //      Tab(
+                      //      text: 'حجز موعد مع خبير',
+                      //    ),
                         ]),
                   ),
 
